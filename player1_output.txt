@@ -1,0 +1,48 @@
+player 1 draws a 1 from deck 1
+player 1 discards a 3 to deck 2
+player 1 current hand is [4, 4, 6, 1]
+player 1 draws a 6 from deck 1
+player 1 discards a 4 to deck 2
+player 1 current hand is [4, 6, 1, 6]
+player 1 draws a 4 from deck 1
+player 1 discards a 4 to deck 2
+player 1 current hand is [6, 1, 6, 4]
+player 1 draws a 6 from deck 1
+player 1 discards a 6 to deck 2
+player 1 current hand is [1, 6, 4, 6]
+player 1 draws a 5 from deck 1
+player 1 discards a 6 to deck 2
+player 1 current hand is [1, 4, 6, 5]
+player 1 draws a 4 from deck 1
+player 1 discards a 4 to deck 2
+player 1 current hand is [1, 6, 5, 4]
+player 1 draws a 5 from deck 1
+player 1 discards a 6 to deck 2
+player 1 current hand is [1, 5, 4, 5]
+player 1 draws a 6 from deck 1
+player 1 discards a 5 to deck 2
+player 1 current hand is [1, 4, 5, 6]
+player 1 draws a 5 from deck 1
+player 1 discards a 4 to deck 2
+player 1 current hand is [1, 5, 6, 5]
+player 1 draws a 2 from deck 1
+player 1 discards a 5 to deck 2
+player 1 current hand is [1, 6, 5, 2]
+player 1 draws a 5 from deck 1
+player 1 discards a 6 to deck 2
+player 1 current hand is [1, 5, 2, 5]
+player 1 draws a 2 from deck 1
+player 1 discards a 5 to deck 2
+player 1 current hand is [1, 2, 5, 2]
+player 1 draws a 1 from deck 1
+player 1 discards a 2 to deck 2
+player 1 current hand is [1, 5, 2, 1]
+player 1 draws a 1 from deck 1
+player 1 discards a 5 to deck 2
+player 1 current hand is [1, 2, 1, 1]
+player 1 draws a 1 from deck 1
+player 1 discards a 2 to deck 2
+player 1 current hand is [1, 1, 1, 1]
+Player 1 wins
+player 1 exits
+player 1 final hand: [1, 1, 1, 1]

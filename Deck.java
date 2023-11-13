@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*; //will be needed when writes to files
 
 public class Deck {
 
@@ -36,6 +37,18 @@ public class Deck {
     public ArrayList<Card> getCardsInDeck() {
         return cards;
     }
+    //for testing purposes only
+    public void printDeck() {
+        System.out.println(cards);
+    }
 
-    //TODO: implement run-time functionality for decks i.e. writing to files at end of game
+    //for writing to file at end of game
+    public void endGame() throws IOException {
+        String deckStr = ("deck" + deckNumber + "_output.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(deckStr));
+        writer.write("deck " + deckNumber + " contents at end of game: " + cards);
+
+        writer.close();
+
+    }
 }

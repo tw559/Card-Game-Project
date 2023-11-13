@@ -1,0 +1,60 @@
+player 4 draws a 23 from deck 4
+player 4 discards a 6 to deck 1
+player 4 current hand is [56, 78, 80, 23]
+player 4 draws a 65 from deck 4
+player 4 discards a 56 to deck 1
+player 4 current hand is [78, 80, 23, 65]
+player 4 draws a 23 from deck 4
+player 4 discards a 78 to deck 1
+player 4 current hand is [80, 23, 65, 23]
+player 4 draws a 4 from deck 4
+player 4 discards a 80 to deck 1
+player 4 current hand is [23, 65, 23, 4]
+player 4 draws a 43 from deck 4
+player 4 discards a 23 to deck 1
+player 4 current hand is [65, 23, 4, 43]
+player 4 draws a 67 from deck 4
+player 4 discards a 65 to deck 1
+player 4 current hand is [23, 4, 43, 67]
+player 4 draws a 9 from deck 4
+player 4 discards a 23 to deck 1
+player 4 current hand is [4, 43, 67, 9]
+player 4 draws a 5 from deck 4
+player 4 discards a 43 to deck 1
+player 4 current hand is [4, 67, 9, 5]
+player 4 draws a 6 from deck 4
+player 4 discards a 67 to deck 1
+player 4 current hand is [4, 9, 5, 6]
+player 4 draws a 56 from deck 4
+player 4 discards a 9 to deck 1
+player 4 current hand is [4, 5, 6, 56]
+player 4 draws a 67 from deck 4
+player 4 discards a 5 to deck 1
+player 4 current hand is [4, 6, 56, 67]
+player 4 draws a 56 from deck 4
+player 4 discards a 6 to deck 1
+player 4 current hand is [4, 56, 67, 56]
+player 4 draws a 67 from deck 4
+player 4 discards a 56 to deck 1
+player 4 current hand is [4, 67, 56, 67]
+player 4 draws a 4 from deck 4
+player 4 discards a 67 to deck 1
+player 4 current hand is [4, 56, 67, 4]
+player 4 draws a 56 from deck 4
+player 4 discards a 56 to deck 1
+player 4 current hand is [4, 67, 4, 56]
+player 4 draws a 34 from deck 4
+player 4 discards a 67 to deck 1
+player 4 current hand is [4, 4, 56, 34]
+player 4 draws a 6 from deck 4
+player 4 discards a 56 to deck 1
+player 4 current hand is [4, 4, 34, 6]
+player 4 draws a 24 from deck 4
+player 4 discards a 34 to deck 1
+player 4 current hand is [4, 4, 6, 24]
+player 4 draws a 91 from deck 4
+player 4 discards a 6 to deck 1
+player 4 current hand is [4, 4, 24, 91]
+player 3 has informed player 4 that player 3 has won.
+player 4 exits
+player 4 final hand: [4, 4, 24, 91]

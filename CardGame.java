@@ -3,75 +3,11 @@ import java.io.*;
 
 public class CardGame {
 
-    public static void playGame(List<Player> players, List<Deck> decks) {
-        boolean gameWon = false;
-
-        while (!gameWon) {
-            for (Player player : players) {
-                if (player.checkWinningHand()) {
-                    System.out.println("Player " + player.getPlayerNumber() + " wins");
-                    gameWon = true;
-                    break;
-                }
-
-                // Draw a card from the left deck and discard to the right deck as a single atomic action
-                synchronized (player.getLeftDeck()) {
-                    synchronized (player.getRightDeck()) {
-                        Deck leftDeck = player.getLeftDeck();
-                        Deck rightDeck = player.getRightDeck();
-
-                        if (!leftDeck.getCardsInDeck().isEmpty()) {
-                            Card drawnCard = leftDeck.getCardsInDeck().remove(0);
-                            System.out.println("player " + player.getPlayerNumber() + " draws a " +
-                                    drawnCard.getValue() + " from deck " + leftDeck.getDeckNumber());
-                            player.addCardToHand(drawnCard);
-
-                            // Discard a card to the right deck
-                            int preferredCardValue = player.getPlayerNumber();
-                            for (Card card : player.getHand()) {
-                                if (card.getValue() != preferredCardValue) {
-                                    int discardIndex = player.getHand().indexOf(card);
-                                    Card discardedCard = player.getHand().remove(discardIndex);
-                                    rightDeck.addCardToDeck(discardedCard);
-                                    System.out.println("player " + player.getPlayerNumber() + " discards a " +
-                                            discardedCard.getValue() + " to deck " + rightDeck.getDeckNumber());
-                                    break;
-                                }
-                            }
-                            // Print the current hand
-                            System.out.print("player " + player.getPlayerNumber() + " current hand is ");
-                            for (Card card : player.getHand()) {
-                                System.out.print(card.getValue() + " ");
-                            }
-                            System.out.println();
-
-                            // Check if the player has won after the draw and discard
-                            if (player.checkWinningHand()) {
-                                System.out.println("Player " + player.getPlayerNumber() + " wins");
-                                gameWon = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // Print the final hands and exit messages for each player
-        for (Player player : players) {
-            System.out.println("player " + player.getPlayerNumber() + " final hand: " + player.getHand());
-            System.out.println("player " + player.getPlayerNumber() + " exits");
-        }
-
-        // Print the contents of each deck at the end of the game
-        for (Deck deck : decks) {
-            System.out.println("deck" + deck.getDeckNumber() + " contents: " + deck.getCardsInDeck());
-        }
-    }
     public static void main(String[] args) throws Exception{
         Scanner in = new Scanner(System.in);
-        System.out.println("Please enter number of players");
-        int n = Integer.parseInt(in.nextLine());
+        //System.out.println("Please enter number of players");
+        //int n = Integer.parseInt(in.nextLine());
+        int n = 3;
         int totalCards = 8 * n;
 
         List<Deck> decks = new ArrayList<>();
@@ -88,15 +24,15 @@ public class CardGame {
         }
 
         //now assign decks to players
-        for(Player p : players){
-            int pn = p.getPlayerNumber();
-            Deck left = decks.get(pn - 1);
-            if (pn < n) {
-                Deck right = decks.get(pn);
-                p.setDecks(left, right);
+        for(Player player : players){
+            int playerNumber = player.getPlayerNumber();
+            Deck left = decks.get(playerNumber - 1);
+            if (playerNumber < n) {
+                Deck right = decks.get(playerNumber);
+                player.setDecks(left, right);
             } else {
                 Deck right = decks.get(0);
-                p.setDecks(left, right);
+                player.setDecks(left, right);
             }
         }
 
@@ -106,16 +42,19 @@ public class CardGame {
             System.out.println("left deck: " + p.getLeftDeck().getDeckNumber());
             System.out.println("right deck: " + p.getRightDeck().getDeckNumber());
         }*/
-
-        System.out.println("Please enter location of pack to load");
-        String file = in.nextLine();    
-        in.close();    
-        try {
-            remainingCards = attemptToReadPackFile(file,totalCards);
-        } catch(Exception e) {
-            System.out.println("Invalid pack file");
+        boolean packRead = false;
+        while (packRead == false) {
+            //System.out.println("Please enter location of pack to load");
+            //String file = in.nextLine();
+            String file = "threeB.txt";
+            try {
+                remainingCards = attemptToReadPackFile(file,totalCards);
+                packRead = true;
+            }   catch(Exception e) {
+                System.out.println("Invalid pack file");
+            }
         }
-
+        in.close();
         //testing getting cards from file works
         /*for (Card c : remainingCards) {
             System.out.println(c.getValue());
@@ -138,31 +77,38 @@ public class CardGame {
     
 
         //testing players have been allocated hands
-        for (Player p : players) {
+        /**for (Player p : players) {
             for (Card c : p.getHand()) {
                 System.out.println("player"+p.getPlayerNumber()+ "'s hand: " + c.getValue());
             }
-        }
+        }*/
 
         //testing deck allocation
-        for (Deck d : decks) {
-            for (Card c : d.getCardsInDeck()) {
-                System.out.println("deck"+d.getDeckNumber()+ ": " + c.getValue());
+        /**for (Deck deck : decks) {
+            for (Card card : deck.getCardsInDeck()) {
+                System.out.println("deck"+deck.getDeckNumber()+ ": " + card.getValue());
             }
-        }
+        }*/
 
         //now to actually start the player threads
-        for (Player p : players) {
-            Thread playerThread = new Thread(p);
+        for (Player player : players) {
+            Thread playerThread = new Thread(player);
             playerThread.start();
         }
-
-        //playGame(players, decks);
-
+        /*
         for (Player player : players) {
             System.out.println(player.getHand());
             System.out.println(player.checkWinningHand());
         }
+        */
+
+
+        int deckTotal = 0;
+        for (Deck deck : decks) {
+            deckTotal = deckTotal + deck.deckSize();
+        }
+        System.out.println(deckTotal);
+
     }
 
     public static ArrayList<Card> attemptToReadPackFile(String file, int cardNum) throws Exception {
